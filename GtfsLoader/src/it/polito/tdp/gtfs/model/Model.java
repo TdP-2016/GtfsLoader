@@ -61,7 +61,11 @@ public class Model {
 	public static void main(String[] args) {
 		Model m = new Model();
 
+		long start = System.nanoTime() ;
 		m.buildGraph();
+		long finish = System.nanoTime() ;
+		
+		System.out.format("Elapsed time: %.3f s\n", (finish-start)/1e9) ;
 		
 		System.out.println(m.graph) ;
 

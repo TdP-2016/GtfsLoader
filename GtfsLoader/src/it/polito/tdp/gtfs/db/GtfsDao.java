@@ -131,6 +131,7 @@ public class GtfsDao {
 	 * High Level Methods
 	 ****/
 	public boolean isConnected(Stop stop1, Stop stop2) {
+		long start = System.nanoTime() ;
 		String sql = "SELECT * \r\n" + 
 				"FROM gtfs_stops AS stop1, gtfs_stop_times AS stoptimes1, gtfs_trips,\r\n" + 
 				"gtfs_stops AS stop2, gtfs_stop_times AS stoptimes2\r\n" + 
@@ -169,6 +170,9 @@ public class GtfsDao {
 			st.close();
 			conn.close();
 
+			long finish = System.nanoTime() ;
+			//System.out.format("[%.3f] ", (finish-start)/1e6);
+			
 			return found ;
 
 		} catch (SQLException e) {
